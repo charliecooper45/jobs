@@ -17,10 +17,9 @@ const LoginForm = () => {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<LoginFormValues> = () => {
-    return new Promise<void>((resolve) => {
+    return new Promise<void>(() => {
       setTimeout(() => {
         router.push("/dashboard");
-        resolve();
       }, 3000);
     });
   };

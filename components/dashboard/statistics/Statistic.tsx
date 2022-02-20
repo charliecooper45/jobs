@@ -9,7 +9,7 @@ const Statistic = ({ label, value }: StatisticProps) => {
   return (
     <Stat textAlign="center">
       <StatLabel fontSize="m">{label}</StatLabel>
-      <StatNumber color="brand.lightBlue" fontSize="3rem">
+      <StatNumber color="brand.phlox" fontSize="3rem" fontWeight="light">
         {value}
       </StatNumber>
     </Stat>

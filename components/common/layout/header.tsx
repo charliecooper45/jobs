@@ -1,5 +1,5 @@
 import logo from "@/images/logo.svg";
-import { Center, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Button, Center, Flex, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
 
 const Header = () => {
@@ -10,7 +10,22 @@ const Header = () => {
       </Center>
       <Spacer />
       <Center>
-        <Text>Box 3</Text>
+        <Button
+          backgroundColor="brand.white"
+          borderRadius="65px"
+          color="brand.ultramarine"
+          height="40px"
+          _hover={{
+            backgroundColor: "brand.white",
+            color: "brand.magenta",
+          }}
+          _focus={{
+            backgroundColor: "brand.white",
+            color: "brand.magenta",
+          }}
+        >
+          Logout
+        </Button>
       </Center>
     </Flex>
   );

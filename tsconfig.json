@@ -18,8 +18,10 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/images/*": ["images/*"]
-    }
+      "@/images/*": ["images/*"],
+      "@/types/*": ["types/*"]
+    },
+    "typeRoots": ["node_modules/@types", "types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
