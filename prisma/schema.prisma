@@ -31,9 +31,7 @@ model Skill {
 
 enum Status {
   NEW
-  CANCELLED
   CV_SENT
-  TECH_TEST
   INTERVIEW_ONE
   INTERVIEW_TWO
   INTERVIEW_THREE

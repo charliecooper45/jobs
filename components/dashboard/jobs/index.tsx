@@ -1,6 +1,7 @@
 import { useJobsQuery } from "@/hooks/useJobsQuery";
-import { Accordion, Box, Flex, Spacer } from "@chakra-ui/react";
-import Job from "./Job";
+import { Accordion, Flex } from "@chakra-ui/react";
+import Header from "./Header";
+import Job from "./job";
 
 const Jobs = () => {
   const { data: jobs } = useJobsQuery();
@@ -12,46 +13,20 @@ const Jobs = () => {
 
   return (
     <>
-      <Flex mt="50px" p="20px 40px">
-        <Box
-          color="brand.white"
-          flex="1"
-          textAlign="left"
-          textTransform="uppercase"
-        >
-          Title
-        </Box>
-        <Box
-          color="brand.white"
-          flex="1"
-          textAlign="left"
-          textTransform="uppercase"
-        >
-          Salary
-        </Box>
-        <Box
-          color="brand.white"
-          flex="1"
-          textAlign="left"
-          textTransform="uppercase"
-        >
-          Status
-        </Box>
-        <Box
-          color="brand.white"
-          flex="1"
-          textAlign="left"
-          textTransform="uppercase"
-        >
-          Last Updated
-        </Box>
-        <Spacer maxWidth="20px" />
+      <Header />
+      <Flex
+        background="linear-gradient(133.62deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);"
+        boxShadow="0px 10px 50px rgba(0, 0, 0, 0.1)"
+        borderRadius="20px"
+        flexDir="column"
+      >
+        <Accordion allowMultiple padding="5px 0">
+          {jobs.map((job, index) => {
+            const isLastJob = index === jobs.length - 1;
+            return <Job key={job.id} job={job} isLastJob={isLastJob} />;
+          })}
+        </Accordion>
       </Flex>
-      <Accordion allowMultiple>
-        {jobs.map((job) => {
-          return <Job key={job.id} job={job} />;
-        })}
-      </Accordion>
     </>
   );
 };

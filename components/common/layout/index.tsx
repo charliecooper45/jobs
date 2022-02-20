@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "./Footer";
+import Header from "./Header";
 
 type Props = {
   children: React.ReactNode;

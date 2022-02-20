@@ -1,6 +1,6 @@
-import { Badge } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Status } from "@prisma/client";
-import { ThemeTypings } from "@chakra-ui/styled-system";
+import { useMemo } from "react";
 
 type StatusProps = {
   status: Status;
@@ -8,8 +8,7 @@ type StatusProps = {
 
 type BadgeOptions = {
   title: string;
-  variant: "outline" | "solid" | "subtle";
-  colorScheme: ThemeTypings["colorSchemes"];
+  color: string;
 };
 
 const parseBadgeOptions = (status: Status): BadgeOptions => {
@@ -17,37 +16,56 @@ const parseBadgeOptions = (status: Status): BadgeOptions => {
     case "NEW":
       return {
         title: status,
-        colorScheme: "gray",
-        variant: "outline",
+        color: "#fff",
       };
     case "CV_SENT":
       return {
+        title: "CV SENT",
+        color: "#fff",
+      };
+    case "INTERVIEW_ONE":
+    case "INTERVIEW_TWO":
+    case "INTERVIEW_THREE":
+      return {
+        title: "INTERVIEW",
+        color: "#fff",
+      };
+    case "OFFERED":
+      return {
         title: status,
-        colorScheme: "purple",
-        variant: "outline",
+        color: "#E6DC00",
+      };
+    case "ACCEPTED":
+      return {
+        title: status,
+        color: "#00DC72",
       };
     case "REJECTED":
       return {
         title: status,
-        colorScheme: "red",
-        variant: "solid",
+        color: "#F009FE",
       };
     default:
-      return {
-        title: status,
-        colorScheme: "green",
-        variant: "outline",
-      };
+      throw new Error(`Status type ${status} not supported`);
   }
 };
 
 const StatusBadge = ({ status }: StatusProps) => {
-  const { title, variant, colorScheme } = parseBadgeOptions(status);
+  const { title, color } = useMemo(() => parseBadgeOptions(status), [status]);
 
   return (
-    <Badge colorScheme={colorScheme} variant={variant}>
+    <Flex
+      alignItems="center"
+      border={`1px solid ${color}`}
+      borderRadius="14px"
+      color={color}
+      fontSize=".75rem"
+      h="20px"
+      justifyContent="center"
+      w="90px"
+    >
       {title}
-    </Badge>
+    </Flex>
   );
 };
 

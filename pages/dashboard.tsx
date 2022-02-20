@@ -11,6 +11,7 @@ const Dashboard: NextPage = () => {
       <Box flex="1">
         <Head>
           <title>JOBS | Dashboard</title>
+          <link rel="icon" href="/favicon.svg" />
         </Head>
         <Statistics />
         <Jobs />

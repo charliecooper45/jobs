@@ -1,13 +1,12 @@
+import Heading from "@/components/index/Heading";
 import LoginForm from "@/components/index/login-form";
-import jobsLogo from "@/images/logo.svg";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
-    <Flex h="100vh" w="100vw" alignItems="center" justifyContent="center">
+    <Flex alignItems="center" h="100vh" justifyContent="center" w="100vw">
       <Head>
         <title>JOBS | Login</title>
         <link rel="icon" href="/favicon.svg" />
@@ -19,11 +18,7 @@ const Home: NextPage = () => {
         flexDir="column"
         p="60px 40px"
       >
-        <Image alt="Jobs Logo" height="50px" priority src={jobsLogo} />
-        <Text fontSize="1.25rem" mt="40px" textAlign="center">
-          Your one and only job search <br />
-          organiser
-        </Text>
+        <Heading />
         <LoginForm />
       </Flex>
     </Flex>

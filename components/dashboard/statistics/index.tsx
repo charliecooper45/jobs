@@ -25,9 +25,9 @@ const Statistics = () => {
     <Flex
       alignItems="center"
       backgroundImage="linear-gradient(to bottom right, rgba(255,255,255,.10), rgba(255,255,255,.05));"
-      boxShadow="0 10px 4px rgba(0,0,0,0.2);"
-      borderRadius="30px"
-      h="150px"
+      borderRadius="20px"
+      boxShadow="0px 10px 50px rgba(0, 0, 0, 0.1);"
+      h="160px"
       mt="20px"
       p="60px 40px"
     >
@@ -35,7 +35,7 @@ const Statistics = () => {
       <Statistic label="Interviews" value={interviews} />
       <Statistic label="Offers" value={offered} />
       <Statistic label="Rejected" value={rejected} />
-      <Statistic label="Accepted" value={accepted} />
+      <Statistic label="Accepted" value={accepted} last />
     </Flex>
   );
 };
