@@ -1,3 +1,5 @@
+import { Job, Skill } from "@prisma/client";
+
 export type Statistics = {
   cvSent: number;
   interviewOne: number;
@@ -7,3 +9,7 @@ export type Statistics = {
   rejected: number;
   accepted: number;
 };
+
+export type JobsResponse = (Job & {
+  skills: Skill[];
+})[];

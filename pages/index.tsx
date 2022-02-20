@@ -19,12 +19,7 @@ const Home: NextPage = () => {
         flexDir="column"
         p="60px 40px"
       >
-        <Image
-          alt="Picture of the author"
-          height="50px"
-          priority
-          src={jobsLogo}
-        />
+        <Image alt="Jobs Logo" height="50px" priority src={jobsLogo} />
         <Text fontSize="1.25rem" mt="40px" textAlign="center">
           Your one and only job search <br />
           organiser

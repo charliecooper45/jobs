@@ -8,13 +8,25 @@ datasource db {
 }
 
 model Job {
+  id         String   @id @default(uuid())
+  status     Status   @default(NEW)
+  salary     String
+  title      String
+  company    String
+  companyUrl String?
+  jobUrl     String?
+  note       String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  skills     Skill[]
+}
+
+model Skill {
   id        String   @id @default(uuid())
-  status    Status   @default(NEW)
-  salary    String
-  title     String
-  company   String
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  jobs      Job[]
 }
 
 enum Status {

@@ -1,9 +1,17 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Text, Flex } from "@chakra-ui/react";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <Flex as="footer" h="120px" maxW="1200px" m="auto" backgroundColor="red">
-      <Box w="100px">Charlie Cooper</Box>
+    <Flex
+      as="footer"
+      minH="60px"
+      p="40px"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Text>&copy; Charlie Cooper {year}</Text>
     </Flex>
   );
 };

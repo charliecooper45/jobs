@@ -6,41 +6,183 @@ const prisma = new PrismaClient();
  * Seeds the database with test data for local development.
  */
 async function main() {
-  await prisma.job.deleteMany();
-  await prisma.job.createMany({
+  await prisma.skill.deleteMany();
+  await prisma.skill.createMany({
     data: [
       {
-        status: Status.NEW,
-        salary: "£100k a week",
-        title: "Attacking Midfielder",
-        company: "Liverpool",
+        name: "TypeScript",
       },
       {
-        status: Status.CV_SENT,
-        salary: "£100k a week",
-        title: "Attacking Midfielder",
-        company: "Liverpool",
+        name: "JavaScript",
       },
       {
-        status: Status.INTERVIEW_ONE,
-        salary: "£100k a week",
-        title: "Attacking Midfielder",
-        company: "Liverpool",
+        name: "Python",
       },
       {
-        status: Status.INTERVIEW_THREE,
-        salary: "£100k a week",
-        title: "Attacking Midfielder",
-        company: "Liverpool",
+        name: "Java",
       },
       {
-        status: Status.REJECTED,
-        salary: "£100k a week",
-        title: "Attacking Midfielder",
-        company: "Liverpool",
+        name: "Rust",
       },
     ],
   });
+
+  await prisma.job.deleteMany();
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  await prisma.job.create({
+    data: {
+      status: Status.NEW,
+      salary: "£100k a week",
+      title: "Attacking Midfielder",
+      company: "Liverpool",
+      skills: {
+        connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
+      },
+    },
+  });
+  // await prisma.job.createMany({
+  //   data: [
+  //     {
+  //       status: Status.NEW,
+  //       salary: "£100k a week",
+  //       title: "Attacking Midfielder",
+  //       company: "Liverpool",
+  //     },
+  //     {
+  //       status: Status.CV_SENT,
+  //       salary: "£100k a week",
+  //       title: "Attacking Midfielder",
+  //       company: "Liverpool",
+  //     },
+  //     {
+  //       status: Status.INTERVIEW_ONE,
+  //       salary: "£100k a week",
+  //       title: "Attacking Midfielder",
+  //       company: "Liverpool",
+  //     },
+  //     {
+  //       status: Status.INTERVIEW_THREE,
+  //       salary: "£100k a week",
+  //       title: "Attacking Midfielder",
+  //       company: "Liverpool",
+  //     },
+  //     {
+  //       status: Status.REJECTED,
+  //       salary: "£100k a week",
+  //       title: "Attacking Midfielder",
+  //       company: "Liverpool",
+  //     },
+  //   ],
+  // });
 }
 
 main()

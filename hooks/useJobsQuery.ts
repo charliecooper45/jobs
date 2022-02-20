@@ -1,9 +1,9 @@
-import { Job } from "@prisma/client";
+import { JobsResponse } from "@/types/index";
 import axios from "axios";
 import { useQuery } from "react-query";
 
-const fetchJobs = async (): Promise<Job[]> => {
-  const response = await axios.get<Job[]>("/api/jobs");
+const fetchJobs = async (): Promise<JobsResponse> => {
+  const response = await axios.get<JobsResponse>("/api/jobs");
   return response.data;
 };
 
