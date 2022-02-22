@@ -23,6 +23,7 @@ const styles = {
     body: {
       background: "none",
       color: "brand.white",
+      overscrollBehavior: "none",
     },
   },
 };

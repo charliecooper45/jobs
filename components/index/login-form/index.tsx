@@ -70,7 +70,7 @@ const LoginForm = () => {
         Login
       </Button>
       <Button
-        background="linear-gradient(90deg, #6E3AFF 0%, #F009FE 100%);"
+        background="linear-gradient(90deg, #6E3AFF 0%, #F009FE 100%)"
         borderRadius="65px"
         color="brand.white"
         height="40px"
@@ -78,7 +78,7 @@ const LoginForm = () => {
         type="button"
         width="100%"
         _hover={{
-          background: "linear-gradient(90deg, #D509FB 0%, #F009FE 100%);",
+          background: "linear-gradient(90deg, #D509FB 0%, #F009FE 100%)",
         }}
         _focus={{
           background: "linear-gradient(90deg, #D509FB 0%, #F009FE 100%);",

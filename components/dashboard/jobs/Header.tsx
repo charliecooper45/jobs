@@ -4,7 +4,7 @@ const headers = ["Title", "Salary", "Status", "Last Updated"];
 
 const Header = () => {
   return (
-    <Flex mt="20px" p="10px 40px">
+    <Flex mt="20px" p="10px 30px">
       {headers.map((header, index) => (
         <Box
           key={header}
@@ -19,7 +19,7 @@ const Header = () => {
           {header}
         </Box>
       ))}
-      <Spacer maxWidth="20px" />
+      <Spacer maxW="50px" />
     </Flex>
   );
 };

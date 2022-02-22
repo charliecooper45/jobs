@@ -10,6 +10,7 @@ import {
 import { Job, Skill } from "@prisma/client";
 import { format } from "date-fns";
 import StatusBadge from "../StatusBadge";
+import EditModal from "./edit-modal";
 import Heading from "./Heading";
 import Links from "./links";
 import ProgressBar from "./ProgressBar";
@@ -22,6 +23,7 @@ type JobProps = {
   isLastJob?: boolean;
 };
 
+// TODO: remove unnecessary render
 const Job = ({ job, isLastJob = false }: JobProps) => {
   const formattedUpdatedAt = format(
     new Date(job.updatedAt),
@@ -68,7 +70,15 @@ const Job = ({ job, isLastJob = false }: JobProps) => {
                 <Flex alignItems="center" flex="1" textAlign="left">
                   {formattedUpdatedAt}
                 </Flex>
-                <AccordionIcon color={iconColor} width="20px" />
+                <Flex
+                  alignItems="center"
+                  justifyContent="center"
+                  textAlign="left"
+                  width="50px"
+                >
+                  <EditModal job={job} />
+                  <AccordionIcon color={iconColor} width="30px" />
+                </Flex>
               </Flex>
             </AccordionButton>
             <AccordionPanel p="30px">

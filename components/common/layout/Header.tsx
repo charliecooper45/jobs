@@ -27,7 +27,7 @@ const Header = () => {
           backgroundColor="brand.white"
           borderRadius="65px"
           color="brand.ultramarine"
-          height="40px"
+          h="40px"
           isLoading={isLoading}
           _hover={{
             backgroundColor: "brand.white",
