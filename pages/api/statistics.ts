@@ -1,10 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Statistics } from "@/types/index";
+import { timeout } from "./utils";
 
 export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse<Statistics>
 ) {
+  await timeout(3000);
+
   // TODO fetch from db
   const statistics: Statistics = {
     cvSent: 12,

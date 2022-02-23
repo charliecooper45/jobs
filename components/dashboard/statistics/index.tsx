@@ -1,25 +1,35 @@
 import { useStatisticsQuery } from "@/hooks/useStatisticsQuery";
 import { Flex } from "@chakra-ui/react";
-import Statistic from "./Statistic";
+import Statistic, { StatisticField } from "./Statistic";
+
+const statistics: {
+  field: StatisticField;
+  label: string;
+}[] = [
+  {
+    field: StatisticField.CvSent,
+    label: "CVs Sent",
+  },
+  {
+    field: StatisticField.Interviews,
+    label: "Interviews",
+  },
+  {
+    field: StatisticField.Offered,
+    label: "Offers",
+  },
+  {
+    field: StatisticField.Rejected,
+    label: "Rejected",
+  },
+  {
+    field: StatisticField.Accepted,
+    label: "Accepted",
+  },
+];
 
 const Statistics = () => {
-  const { data: statistics } = useStatisticsQuery();
-
-  if (!statistics) {
-    // TODO: loading
-    return <div>loading</div>;
-  }
-
-  const {
-    cvSent,
-    interviewOne,
-    interviewTwo,
-    interviewThree,
-    offered,
-    rejected,
-    accepted,
-  } = statistics;
-  const interviews = interviewOne + interviewTwo + interviewThree;
+  const { data: statisticsData, isLoading } = useStatisticsQuery();
 
   return (
     <Flex
@@ -31,11 +41,15 @@ const Statistics = () => {
       mt="20px"
       p="60px 40px"
     >
-      <Statistic label="CVs Sent" value={cvSent} />
-      <Statistic label="Interviews" value={interviews} />
-      <Statistic label="Offers" value={offered} />
-      <Statistic label="Rejected" value={rejected} />
-      <Statistic label="Accepted" value={accepted} last />
+      {statistics.map(({ field, label }) => (
+        <Statistic
+          key={field}
+          field={field}
+          isLoading={isLoading}
+          label={label}
+          statistics={statisticsData}
+        />
+      ))}
     </Flex>
   );
 };
