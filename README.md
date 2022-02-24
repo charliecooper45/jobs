@@ -1,6 +1,10 @@
-# Jobs
-
-A simple app for helping document the job search process.
+<div align="center">
+  <p align="center">
+    <img src="images/logo.svg" width="200" alt="Jobs Logo" />
+  </p>
+  <hr />
+  <p>A simple app for helping document and track the job search process.</p>
+</div>
 
 ## Why?
 
@@ -21,6 +25,14 @@ Fortunately, I haven't had to search for jobs often in recent times. In the past
 - TypeScript
 - Next.js API Routes (Serverless functions)
 - Prisma
+
+### Deployment
+
+- Github
+  - `create-issue-branch` for automated branch management
+- Vercel
+- Prisma Data Platform
+- Heroku Postgres
 
 ## Getting Started
 
