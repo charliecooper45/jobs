@@ -1,11 +1,9 @@
 import { PrismaClient, Status } from "@prisma/client";
 
-const prisma = new PrismaClient();
-
 /**
- * Seeds the database with test data for local development.
+ * Seeds the database with test data.
  */
-async function main() {
+export async function seed(prisma: PrismaClient) {
   await prisma.skill.deleteMany();
   await prisma.skill.createMany({
     data: [
@@ -86,12 +84,3 @@ async function main() {
     },
   });
 }
-
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
