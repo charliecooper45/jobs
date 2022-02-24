@@ -29,9 +29,10 @@ const EditModal = ({ job }: EditModalProps) => {
       <IconButton
         onClick={handleEditClick}
         aria-label="Edit job"
+        as="div"
+        background="none"
         color="rgba(255, 255, 255, 0.4)"
         icon={<EditIcon />}
-        variant="unstyled"
         _focus={{
           outline: "none",
         }}

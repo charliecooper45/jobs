@@ -6,8 +6,7 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse<Statistics>
 ) {
-  await timeout(3000);
-
+  await timeout(1000);
   // TODO fetch from db
   const statistics: Statistics = {
     cvSent: 12,

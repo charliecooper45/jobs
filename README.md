@@ -1,6 +1,10 @@
-# Jobs
-
-A simple app for helping document and track the job search process.
+<div align="center">
+  <p align="center">
+    <img src="images/logo.svg" width="200" alt="Jobs Logo" />
+  </p>
+  <hr />
+  <p>A simple app for helping document and track the job search process.</p>
+</div>
 
 ## Why?
 

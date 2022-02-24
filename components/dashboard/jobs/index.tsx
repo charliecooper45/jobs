@@ -1,15 +1,22 @@
 import { useJobsQuery } from "@/hooks/useJobsQuery";
-import { Accordion, Flex } from "@chakra-ui/react";
+import { Accordion, Flex, Spinner } from "@chakra-ui/react";
 import Header from "./Header";
 import Job from "./job";
 
 const Jobs = () => {
-  const { data: jobs } = useJobsQuery();
+  const { data: jobs, isLoading } = useJobsQuery();
 
-  if (!jobs) {
-    // TODO: skeleton
-    return <div>Loading...</div>;
-  }
+  const content =
+    !isLoading && jobs ? (
+      jobs.map((job, index) => {
+        const isLastJob = index === jobs.length - 1;
+        return <Job key={job.id} job={job} isLastJob={isLastJob} />;
+      })
+    ) : (
+      <Flex alignItems="center" h="331px" justifyContent="center">
+        <Spinner size="xl" speed="0.8s" />
+      </Flex>
+    );
 
   return (
     <>
@@ -21,10 +28,7 @@ const Jobs = () => {
         flexDir="column"
       >
         <Accordion allowMultiple padding="5px 0">
-          {jobs.map((job, index) => {
-            const isLastJob = index === jobs.length - 1;
-            return <Job key={job.id} job={job} isLastJob={isLastJob} />;
-          })}
+          {content}
         </Accordion>
       </Flex>
     </>
