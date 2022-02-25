@@ -13,7 +13,7 @@ import StatusBadge from "../StatusBadge";
 import EditModal from "./edit-modal";
 import Heading from "./Heading";
 import Links from "./links";
-import ProgressBar from "./ProgressBar";
+import StatusBar from "./status-bar";
 import Skills from "./Skills";
 
 type JobProps = {
@@ -84,7 +84,7 @@ const Job = ({ job, isLastJob = false }: JobProps) => {
             <AccordionPanel p="30px">
               <Flex marginRight="20px">
                 <Flex flex="2.3" flexDir="column">
-                  <ProgressBar />
+                  <StatusBar status={job.status} />
                   <Skills skills={job.skills} />
                   <Links job={job} />
                 </Flex>
