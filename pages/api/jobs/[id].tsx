@@ -1,4 +1,4 @@
-import { JobResponse } from "@/types/";
+import { JobResponse } from "@/types/index";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
 import { timeout } from "../utils";
@@ -14,6 +14,9 @@ const handlePatch = async (
     },
     data: {
       ...req.body,
+    },
+    include: {
+      skills: true,
     },
   });
   res.status(200).json(user);
