@@ -41,7 +41,12 @@ const Job = ({ job, isLastJob = false }: JobProps) => {
 
         return (
           <>
-            <AccordionButton p="20px 30px 0 30px" _focus={{ outline: "none" }}>
+            <AccordionButton
+              as="div"
+              cursor="pointer"
+              p="20px 30px 0 30px"
+              _focus={{ outline: "none" }}
+            >
               <Flex
                 alignItems="center"
                 borderBottom={borderBottom}

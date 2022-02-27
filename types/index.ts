@@ -10,6 +10,8 @@ export type Statistics = {
   accepted: number;
 };
 
-export type JobsResponse = (Job & {
+export type JobResponse = Job & {
   skills: Skill[];
-})[];
+};
+
+export type JobsResponse = JobResponse[];

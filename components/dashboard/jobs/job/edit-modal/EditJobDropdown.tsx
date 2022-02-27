@@ -57,7 +57,7 @@ const EditJobDropdown = ({ register, name }: EditJobDropdownProps) => {
     >
       {options.map(({ text, value }) => {
         return (
-          <option key="value" value={value}>
+          <option key={value} value={value}>
             {text}
           </option>
         );
