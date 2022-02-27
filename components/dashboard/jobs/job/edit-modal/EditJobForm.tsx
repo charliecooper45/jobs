@@ -1,7 +1,8 @@
+import { useEditJobMutation } from "@/hooks/useEditJobMutation";
 import { Box, Button, Flex, Spacer, Text } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
 import { MouseEventHandler } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../Heading";
 import EditJobDropdown from "./EditJobDropdown";
 import EditJobInput from "./EditJobInput";
@@ -24,7 +25,7 @@ export type EditJobFormValues = {
 
 const EditJobForm = ({ job, onClose }: EditJobProps) => {
   const { title, company, jobUrl, companyUrl, status, skills } = job;
-  const { register } = useForm<EditJobFormValues>({
+  const { handleSubmit, register } = useForm<EditJobFormValues>({
     defaultValues: {
       title,
       company,
@@ -33,13 +34,20 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
       status,
     },
   });
+  const { mutate, isLoading } = useEditJobMutation();
 
   const handleClick: MouseEventHandler = (e) => {
     e.stopPropagation();
   };
 
+  const onSubmit: SubmitHandler<EditJobFormValues> = (data) => {
+    mutate({ id: job.id, data });
+  };
+
   return (
     <Flex
+      onSubmit={handleSubmit(onSubmit)}
+      as="form"
       onClick={handleClick}
       background="linear-gradient(133.62deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)"
       boxShadow="0px 10px 50px rgba(0, 0, 0, 0.1)"
@@ -144,7 +152,9 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
             borderRadius="65px"
             color="brand.white"
             h="40px"
+            isLoading={isLoading}
             mr="10px"
+            type="submit"
             w="100px"
             _hover={{
               background: "linear-gradient(90deg, #D509FB 0%, #F009FE 100%)",
@@ -160,6 +170,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
             backgroundColor="brand.white"
             borderRadius="65px"
             color="brand.ultramarine"
+            disabled={isLoading}
             h="40px"
             mr="10px"
             w="100px"
