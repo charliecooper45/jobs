@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="css-7lqv2e"
+  >
+    <div
+      class="css-1i59fc"
+    >
+      Title
+    </div>
+    <div
+      class="css-11koujc"
+    >
+      Salary
+    </div>
+    <div
+      class="css-11koujc"
+    >
+      Status
+    </div>
+    <div
+      class="css-11koujc"
+    >
+      Last Updated
+    </div>
+    <div
+      class="css-pav208"
+    />
+  </div>
+</DocumentFragment>
+`;
