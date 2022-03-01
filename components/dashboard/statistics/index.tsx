@@ -41,13 +41,14 @@ const Statistics = () => {
       mt="20px"
       p="60px 40px"
     >
-      {statistics.map(({ field, label }) => (
+      {statistics.map(({ field, label }, index) => (
         <Statistic
           key={field}
           field={field}
           isLoading={isLoading}
           label={label}
           statistics={statisticsData}
+          last={index === statistics.length - 1}
         />
       ))}
     </Flex>

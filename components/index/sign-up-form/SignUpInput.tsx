@@ -1,22 +1,22 @@
 import { Input } from "@chakra-ui/react";
 import { UseFormRegister } from "react-hook-form";
-import { LoginFormValues } from ".";
+import { SignUpValues } from ".";
 
-type LoginInputProps = {
-  register: UseFormRegister<LoginFormValues>;
-  name: "email" | "password";
+type SignUpProps = {
+  register: UseFormRegister<SignUpValues>;
+  name: "email" | "password" | "confirmPassword";
   placeholder: string;
   isPassword?: boolean;
   mt?: string;
 };
 
-const LoginInput = ({
+const SignUpInput = ({
   register,
-  name,
-  placeholder,
-  isPassword = false,
   mt = "0",
-}: LoginInputProps) => {
+  name,
+  isPassword = false,
+  placeholder,
+}: SignUpProps) => {
   return (
     <Input
       {...register(name)}
@@ -35,4 +35,4 @@ const LoginInput = ({
   );
 };
 
-export default LoginInput;
+export default SignUpInput;

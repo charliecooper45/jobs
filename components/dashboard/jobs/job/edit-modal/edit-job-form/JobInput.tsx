@@ -1,13 +1,13 @@
 import { Input } from "@chakra-ui/react";
 import { UseFormRegister } from "react-hook-form";
-import { EditJobFormValues } from "./EditJobForm";
+import { EditJobFormValues } from ".";
 
-type EditJobInputProps = {
+type JobInputProps = {
   register: UseFormRegister<EditJobFormValues>;
   name: "title" | "company" | "jobUrl" | "companyUrl";
 };
 
-const EditJobInput = ({ register, name }: EditJobInputProps) => {
+const JobInput = ({ register, name }: JobInputProps) => {
   return (
     <Input
       {...register(name)}
@@ -23,4 +23,4 @@ const EditJobInput = ({ register, name }: EditJobInputProps) => {
   );
 };
 
-export default EditJobInput;
+export default JobInput;

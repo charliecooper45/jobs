@@ -1,4 +1,4 @@
-import { EditJobFormValues } from "@/components/dashboard/jobs/job/edit-modal/EditJobForm";
+import { EditJobFormValues } from "@/components/dashboard/jobs/job/edit-modal/edit-job-form";
 import { JobResponse } from "@/types/index";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";

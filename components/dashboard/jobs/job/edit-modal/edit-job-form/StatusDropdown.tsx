@@ -1,9 +1,9 @@
 import { Select } from "@chakra-ui/react";
 import { Status } from "@prisma/client";
 import { UseFormRegister } from "react-hook-form";
-import { EditJobFormValues } from "./EditJobForm";
+import { EditJobFormValues } from ".";
 
-type EditJobDropdownProps = {
+type StatusDropdownProps = {
   register: UseFormRegister<EditJobFormValues>;
   name: "status";
 };
@@ -43,7 +43,7 @@ const options: { value: Status; text: string }[] = [
   },
 ];
 
-const EditJobDropdown = ({ register, name }: EditJobDropdownProps) => {
+const StatusDropdown = ({ register, name }: StatusDropdownProps) => {
   return (
     <Select
       id={name}
@@ -66,4 +66,4 @@ const EditJobDropdown = ({ register, name }: EditJobDropdownProps) => {
   );
 };
 
-export default EditJobDropdown;
+export default StatusDropdown;
