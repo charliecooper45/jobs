@@ -2,7 +2,7 @@ import { EditIcon } from "@chakra-ui/icons";
 import { Flex, IconButton, useDisclosure } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
 import { MouseEventHandler } from "react";
-import EditJobForm from "./EditJobForm";
+import EditJobForm from "./edit-job-form";
 
 type EditModalProps = {
   job: Job & {

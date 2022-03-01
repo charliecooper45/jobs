@@ -31,6 +31,9 @@ export async function seed(prisma: PrismaClient) {
     ],
   });
 
+  const note =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed neque in enim mattis venenatis. Curabitur sit amet tellus sit amet nisl ultricies sagittis vel sagittis diam. Duis iaculis tortor augue, rutrum vehicula tortor porta sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec tincidunt euismod consequat. Donec tristique semper tortor in ornare. Proin hendrerit rhoncus egestas. Mauris gravida diam lacus, vel mollis erat feugiat in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Aliquam blandit quam nisi, in rutrum est facilisis vitae.";
+
   await prisma.job.deleteMany();
   await prisma.job.create({
     data: {
@@ -40,6 +43,7 @@ export async function seed(prisma: PrismaClient) {
       company: "Microsoft",
       jobUrl: "https://microsoft.com",
       companyUrl: "https://microsoft.com",
+      note,
       skills: {
         connect: [{ name: "TypeScript" }, { name: "JavaScript" }],
       },
@@ -51,6 +55,7 @@ export async function seed(prisma: PrismaClient) {
       salary: "£20k",
       title: "Full Stack Engineer",
       company: "Ocado",
+      note,
       skills: {
         connect: [
           { name: "JavaScript" },
@@ -67,6 +72,7 @@ export async function seed(prisma: PrismaClient) {
       salary: "£18k",
       title: "Junior Frontend Developer",
       company: "Advance Auto Parts",
+      note,
       skills: {
         connect: [{ name: "HTML" }, { name: "CSS" }],
       },
@@ -78,6 +84,7 @@ export async function seed(prisma: PrismaClient) {
       salary: "£150k",
       title: "CTO",
       company: "Zoopla",
+      note,
       skills: {
         connect: [{ name: "Java" }],
       },
