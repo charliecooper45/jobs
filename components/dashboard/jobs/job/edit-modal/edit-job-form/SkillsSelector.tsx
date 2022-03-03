@@ -36,7 +36,7 @@ const SkillsSelector = ({ skills }: SkillsSelectorProps) => {
       minH="80px"
       maxW="100%"
       m="10px 0 30px 0"
-      overflow="scroll"
+      overflow="auto"
       padding="8px 16px"
       _focusWithin={{
         border: "1px solid white",

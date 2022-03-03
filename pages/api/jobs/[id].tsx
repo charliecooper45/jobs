@@ -8,7 +8,7 @@ const handlePatch = async (
   req: NextApiRequest,
   res: NextApiResponse<JobResponse>
 ) => {
-  const user = await prisma.job.update({
+  const job = await prisma.job.update({
     where: {
       id: String(req.query.id),
     },
@@ -19,7 +19,7 @@ const handlePatch = async (
       skills: true,
     },
   });
-  res.status(200).json(user);
+  res.status(200).json(job);
 };
 
 export default async function handler(
