@@ -10,7 +10,7 @@ const Note = ({ note }: NoteProps) => {
       border="1px solid rgba(255, 255, 255, 0.1)"
       borderRadius="15px"
       flex="1"
-      overflow="scroll"
+      overflow="auto"
       mt="15px"
       p="15px"
     >
