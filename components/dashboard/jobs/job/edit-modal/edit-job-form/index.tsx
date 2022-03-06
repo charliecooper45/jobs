@@ -1,16 +1,15 @@
 import { useEditJobMutation } from "@/hooks/useEditJobMutation";
-import { Button, Flex, Spacer } from "@chakra-ui/react";
+import { Flex, Spacer } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../../Heading";
-import EditJobButtons from "./SaveDeleteButtons";
+import GoBackButton from "./GoBackButton";
 import EditJobInput from "./JobInput";
-import Note from "./Note";
+import NoteTextarea from "./NoteTextarea";
+import SaveDeleteButtons from "./SaveDeleteButtons";
 import SkillsSelector from "./SkillsSelector";
 import StatusDropdown from "./StatusDropdown";
-import SaveDeleteButtons from "./SaveDeleteButtons";
-import GoBackButton from "./GoBackButton";
 
 type EditJobProps = {
   job: Job & {
@@ -25,10 +24,14 @@ export type EditJobFormValues = {
   jobUrl: string | null;
   companyUrl: string | null;
   status: string;
+  note: string | null;
 };
 
 const EditJobForm = ({ job, onClose }: EditJobProps) => {
   const { title, company, jobUrl, companyUrl, status, skills, note } = job;
+  const [newSkills, setNewSkills] = useState(() =>
+    skills.map((skill) => skill.name)
+  );
   const { handleSubmit, register } = useForm<EditJobFormValues>({
     defaultValues: {
       title,
@@ -36,6 +39,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
       jobUrl,
       companyUrl,
       status,
+      note,
     },
   });
   const { mutate, isLoading } = useEditJobMutation();
@@ -44,8 +48,12 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
     e.stopPropagation();
   };
 
+  const handleAddSkill = (newSkill: string) => {
+    setNewSkills([...newSkills, newSkill]);
+  };
+
   const onSubmit: SubmitHandler<EditJobFormValues> = (data) => {
-    mutate({ id: job.id, data });
+    mutate({ id: job.id, data, newSkills });
   };
 
   return (
@@ -56,6 +64,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
       background="linear-gradient(133.62deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)"
       boxShadow="0px 10px 50px rgba(0, 0, 0, 0.1)"
       borderRadius="20px"
+      flex="1"
       h="90vh"
       maxW="1200px"
     >
@@ -65,7 +74,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
         <Heading color="brand.white" marginLeft="10px" text="Company" />
         <EditJobInput name="company" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Skills" />
-        <SkillsSelector skills={skills} />
+        <SkillsSelector newSkills={newSkills} onAddSkill={handleAddSkill} />
         <Heading color="brand.white" marginLeft="10px" text="Website" />
         <EditJobInput name="companyUrl" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Job Spec" />
@@ -77,7 +86,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
         <Heading color="brand.white" marginLeft="10px" text="Status" />
         <StatusDropdown name="status" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Notes" />
-        <Note note={note} />
+        <NoteTextarea register={register} />
         <SaveDeleteButtons isLoading={isLoading} onClose={onClose} />
       </Flex>
     </Flex>

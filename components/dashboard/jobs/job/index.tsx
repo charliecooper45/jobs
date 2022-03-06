@@ -5,7 +5,7 @@ import {
   AccordionPanel,
   Box,
   Flex,
-  Text,
+  Textarea,
 } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
 import { format } from "date-fns";
@@ -13,8 +13,8 @@ import StatusBadge from "../StatusBadge";
 import EditModal from "./edit-modal";
 import Heading from "./Heading";
 import Links from "./links";
-import StatusBar from "./status-bar";
 import Skills from "./Skills";
+import StatusBar from "./status-bar";
 
 type JobProps = {
   job: Job & {
@@ -95,22 +95,25 @@ const Job = ({ job, isLastJob = false }: JobProps) => {
                 </Flex>
                 <Flex flex="2" flexDir="column">
                   <Heading text="Notes" />
-                  <Box
+                  <Textarea
                     border="1px solid rgba(255, 255, 255, 0.1)"
+                    borderColor="none"
                     borderRadius="15px"
+                    cursor="default"
+                    flex="1"
                     mt="15px"
                     p="15px"
+                    readOnly
+                    resize="none"
+                    _focus={{
+                      outline: "none",
+                    }}
+                    _hover={{
+                      borderColor: "none",
+                    }}
                   >
-                    <Text>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Pellentesque vel quam tempor, varius dui congue, ultricies
-                      nulla. In porta iaculis ligula a ullamcorper. Integer
-                      gravida sapien ut dictum interdum. Nullam sed lectus sed
-                      urna tristique tristique at nec tortor. Sed nisl magna,
-                      rhoncus vitae magna in, congue pellentesque odio. Morbi ut
-                      elit sollicitudin, ultricies est eget, accumsan libero.
-                    </Text>
-                  </Box>
+                    {job.note}
+                  </Textarea>
                 </Flex>
               </Flex>
             </AccordionPanel>
