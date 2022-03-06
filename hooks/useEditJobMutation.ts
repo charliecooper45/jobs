@@ -5,11 +5,18 @@ import { useMutation, useQueryClient } from "react-query";
 import { JOBS_QUERY_KEY } from "./useJobsQuery";
 import { STATISTICS_QUERY_KEY } from "./useStatisticsQuery";
 
-const editJob = async (
-  id: string,
-  data: EditJobFormValues
-): Promise<JobResponse> => {
-  const response = await axios.patch<JobResponse>(`/api/jobs/${id}`, data);
+type EditJobData = {
+  id: string;
+  data: EditJobFormValues;
+  newSkills: string[];
+};
+
+const editJob = async (editJobData: EditJobData): Promise<JobResponse> => {
+  const { id, data, newSkills } = editJobData;
+  const response = await axios.patch<JobResponse>(`/api/jobs/${id}`, {
+    data,
+    newSkills,
+  });
   return response.data;
 };
 
@@ -22,8 +29,8 @@ export const useEditJobMutation = () => {
   };
 
   return useMutation(
-    ({ id, data }: { id: string; data: EditJobFormValues }) => {
-      return editJob(id, data);
+    (editJobData: EditJobData) => {
+      return editJob(editJobData);
     },
     {
       // onMutate: TODO: optimistic update https://react-query.tanstack.com/guides/mutations

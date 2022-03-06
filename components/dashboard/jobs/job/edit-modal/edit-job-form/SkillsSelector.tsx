@@ -1,16 +1,13 @@
 import { Flex, Input } from "@chakra-ui/react";
-import { Skill } from "@prisma/client";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 type SkillsSelectorProps = {
-  skills: Skill[];
+  newSkills: string[];
+  onAddSkill: (newSkill: string) => void;
 };
 
-const SkillsSelector = ({ skills }: SkillsSelectorProps) => {
+const SkillsSelector = ({ newSkills, onAddSkill }: SkillsSelectorProps) => {
   const [newSkill, setNewSkill] = useState<string>("");
-  const [newSkills, setNewSkills] = useState(() =>
-    skills.map((skill) => skill.name)
-  );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewSkill(e.target.value);
@@ -20,7 +17,7 @@ const SkillsSelector = ({ skills }: SkillsSelectorProps) => {
     if (e.key === "Enter") {
       e.preventDefault();
       setNewSkill("");
-      setNewSkills([...newSkills, newSkill]);
+      onAddSkill(newSkill);
     }
   };
 

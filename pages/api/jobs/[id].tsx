@@ -8,17 +8,29 @@ const handlePatch = async (
   req: NextApiRequest,
   res: NextApiResponse<JobResponse>
 ) => {
+  const { data, newSkills } = req.body;
+
   const job = await prisma.job.update({
     where: {
       id: String(req.query.id),
     },
     data: {
-      ...req.body,
+      ...data,
+      skills: {
+        connectOrCreate: newSkills.map((newSkill: string) => {
+          return {
+            where: { name: newSkill },
+            create: { name: newSkill },
+          };
+        }),
+      },
     },
     include: {
       skills: true,
     },
   });
+
+  // TODO: disconnect skills that are no longer connected
   res.status(200).json(job);
 };
 

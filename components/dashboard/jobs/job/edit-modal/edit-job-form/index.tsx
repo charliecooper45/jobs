@@ -1,7 +1,7 @@
 import { useEditJobMutation } from "@/hooks/useEditJobMutation";
 import { Button, Flex, Spacer } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../../Heading";
 import EditJobButtons from "./SaveDeleteButtons";
@@ -29,6 +29,9 @@ export type EditJobFormValues = {
 
 const EditJobForm = ({ job, onClose }: EditJobProps) => {
   const { title, company, jobUrl, companyUrl, status, skills, note } = job;
+  const [newSkills, setNewSkills] = useState(() =>
+    skills.map((skill) => skill.name)
+  );
   const { handleSubmit, register } = useForm<EditJobFormValues>({
     defaultValues: {
       title,
@@ -44,8 +47,12 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
     e.stopPropagation();
   };
 
+  const handleAddSkill = (newSkill: string) => {
+    setNewSkills([...newSkills, newSkill]);
+  };
+
   const onSubmit: SubmitHandler<EditJobFormValues> = (data) => {
-    mutate({ id: job.id, data });
+    mutate({ id: job.id, data, newSkills });
   };
 
   return (
@@ -65,7 +72,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
         <Heading color="brand.white" marginLeft="10px" text="Company" />
         <EditJobInput name="company" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Skills" />
-        <SkillsSelector skills={skills} />
+        <SkillsSelector newSkills={newSkills} onAddSkill={handleAddSkill} />
         <Heading color="brand.white" marginLeft="10px" text="Website" />
         <EditJobInput name="companyUrl" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Job Spec" />
