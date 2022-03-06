@@ -101,15 +101,7 @@ const Job = ({ job, isLastJob = false }: JobProps) => {
                     mt="15px"
                     p="15px"
                   >
-                    <Text>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Pellentesque vel quam tempor, varius dui congue, ultricies
-                      nulla. In porta iaculis ligula a ullamcorper. Integer
-                      gravida sapien ut dictum interdum. Nullam sed lectus sed
-                      urna tristique tristique at nec tortor. Sed nisl magna,
-                      rhoncus vitae magna in, congue pellentesque odio. Morbi ut
-                      elit sollicitudin, ultricies est eget, accumsan libero.
-                    </Text>
+                    <Text>{job.note}</Text>
                   </Box>
                 </Flex>
               </Flex>

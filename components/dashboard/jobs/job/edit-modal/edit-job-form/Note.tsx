@@ -1,21 +1,27 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Textarea } from "@chakra-ui/react";
+import { UseFormRegister } from "react-hook-form";
+import { EditJobFormValues } from ".";
 
 type NoteProps = {
-  note: string | null;
+  register: UseFormRegister<EditJobFormValues>;
 };
 
-const Note = ({ note }: NoteProps) => {
+const Note = ({ register }: NoteProps) => {
   return (
-    <Box
-      border="1px solid rgba(255, 255, 255, 0.1)"
+    <Textarea
+      {...register("note")}
+      backgroundColor="rgba(255, 255, 255, 0.1)"
+      border="none"
       borderRadius="15px"
+      focusBorderColor="brand.white"
+      outline="none"
       flex="1"
-      overflow="auto"
       mt="15px"
-      p="15px"
-    >
-      <Text>{note}</Text>
-    </Box>
+      _focus={{
+        outline: "none",
+        border: "1px solid",
+      }}
+    />
   );
 };
 

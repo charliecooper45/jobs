@@ -25,6 +25,7 @@ export type EditJobFormValues = {
   jobUrl: string | null;
   companyUrl: string | null;
   status: string;
+  note: string | null;
 };
 
 const EditJobForm = ({ job, onClose }: EditJobProps) => {
@@ -39,6 +40,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
       jobUrl,
       companyUrl,
       status,
+      note,
     },
   });
   const { mutate, isLoading } = useEditJobMutation();
@@ -63,6 +65,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
       background="linear-gradient(133.62deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)"
       boxShadow="0px 10px 50px rgba(0, 0, 0, 0.1)"
       borderRadius="20px"
+      flex="1"
       h="90vh"
       maxW="1200px"
     >
@@ -84,7 +87,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
         <Heading color="brand.white" marginLeft="10px" text="Status" />
         <StatusDropdown name="status" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Notes" />
-        <Note note={note} />
+        <Note register={register} />
         <SaveDeleteButtons isLoading={isLoading} onClose={onClose} />
       </Flex>
     </Flex>
