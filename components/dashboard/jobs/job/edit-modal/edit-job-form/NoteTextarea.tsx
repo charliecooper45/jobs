@@ -14,14 +14,16 @@ const NoteTextarea = ({ register }: NoteTextareaProps) => {
       border="1px solid rgba(255, 255, 255, 0)"
       borderRadius="15px"
       borderColor="none"
-      focusBorderColor="brand.white"
       outline="none"
       flex="1"
       mt="15px"
       resize="none"
       _focus={{
+        borderColor: "brand.white",
         outline: "none",
-        border: "1px solid",
+      }}
+      _hover={{
+        borderColor: "none",
       }}
     />
   );
