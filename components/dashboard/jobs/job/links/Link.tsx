@@ -9,6 +9,7 @@ type LinkProps = {
 const Link = ({ url, text }: LinkProps) => {
   return (
     <ChakraLink
+      alignSelf="baseline"
       href={url}
       isExternal
       _hover={{ textDecoration: "none" }}

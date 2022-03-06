@@ -1,16 +1,15 @@
 import { useEditJobMutation } from "@/hooks/useEditJobMutation";
-import { Button, Flex, Spacer } from "@chakra-ui/react";
+import { Flex, Spacer } from "@chakra-ui/react";
 import { Job, Skill } from "@prisma/client";
 import { MouseEventHandler, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Heading from "../../Heading";
-import EditJobButtons from "./SaveDeleteButtons";
+import GoBackButton from "./GoBackButton";
 import EditJobInput from "./JobInput";
-import Note from "./Note";
+import NoteTextarea from "./NoteTextarea";
+import SaveDeleteButtons from "./SaveDeleteButtons";
 import SkillsSelector from "./SkillsSelector";
 import StatusDropdown from "./StatusDropdown";
-import SaveDeleteButtons from "./SaveDeleteButtons";
-import GoBackButton from "./GoBackButton";
 
 type EditJobProps = {
   job: Job & {
@@ -87,7 +86,7 @@ const EditJobForm = ({ job, onClose }: EditJobProps) => {
         <Heading color="brand.white" marginLeft="10px" text="Status" />
         <StatusDropdown name="status" register={register} />
         <Heading color="brand.white" marginLeft="10px" text="Notes" />
-        <Note register={register} />
+        <NoteTextarea register={register} />
         <SaveDeleteButtons isLoading={isLoading} onClose={onClose} />
       </Flex>
     </Flex>
